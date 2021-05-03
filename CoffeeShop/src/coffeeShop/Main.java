@@ -13,7 +13,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Customer customer = new Customer(1,"Deniz","Dinler",LocalDate.of(1989, 6, 19),"12345555");
+		Customer customer = new Customer(1,"Deniz","Dinler",LocalDate.of(1989, 6, 19),"123455555");
 		
 //		BaseCustomerManager customerManager1 = new NeroCustomerManager();
 //		customerManager1.save(customer);

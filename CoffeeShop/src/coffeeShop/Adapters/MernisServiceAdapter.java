@@ -1,6 +1,7 @@
 package coffeeShop.Adapters;
 
-import java.rmi.RemoteException;
+
+import java.util.Locale;
 
 import coffeeShop.Abstract.CustomerCheckService;
 import coffeeShop.Entities.Customer;
@@ -17,17 +18,23 @@ public class MernisServiceAdapter implements CustomerCheckService {
 		
 		try {
 			System.out.println("Identity check is progressing...");
+			
+			System.out.println("TC id: " + Long.parseLong(customer.getNationalityId()) 
+			+ "\nFirst Name: " + customer.getFirstName().toUpperCase(new Locale("tr","TR"))
+			+ "\nLast Name: " + customer.getLastName().toUpperCase(new Locale("tr","TR"))
+			+ "\nBirth Year: " + customer.getDateOfBirth().getYear());
+			
 			result = client.TCKimlikNoDogrula(
 					Long.parseLong(customer.getNationalityId()) , 
-					customer.getFirstName().toUpperCase(), 
-					customer.getLastName().toUpperCase(), 
+					customer.getFirstName().toUpperCase(new Locale("tr","TR")), 
+					customer.getLastName().toUpperCase(new Locale("tr","TR")), 
 					customer.getDateOfBirth().getYear()
 					);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Error: " + e.getMessage());
 		}
-		System.out.println("Not a real person");
 		return result;
 	}
 	
